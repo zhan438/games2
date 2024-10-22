@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <title>About Me</title>
+    <style>
+        .game-item {
+            display: flex;             
+            flex-direction: column;    
+            align-items: center;       
+            margin-bottom: 20px;       
+        }
+
+        #current-time {
+            font-size: 20px;          /* Adjust font size for visibility */
+            margin-bottom: 20px;       /* Add space below the time tracker */
+            margin-right: 20px;
+        }
+    </style>
+    <script>
+        function updateTime() {
+            const now = new Date();
+            const options = { 
+                hour: '2-digit', 
+                minute: '2-digit', 
+                second: '2-digit', 
+                hour12: false // Change to true for 12-hour format
+            };
+            document.getElementById("current-time").textContent = now.toLocaleTimeString([], options);
+        }
+
+        window.onload = function() {
+            updateTime();
+            setInterval(updateTime, 1000); // Update time every second
+        };
+    </script>
+
+    <script>
+        function updateTime() {
+            fetch('/get-time/')  // Adjust the endpoint as necessary
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('timeDisplay').textContent = data.current_time;
+                })
+                .catch(error => console.error('Error fetching time:', error));
+        }
+
+        // Update time every second (1000 milliseconds)
+        setInterval(updateTime, 1000);
+        
+        // Call updateTime on page load
+        window.onload = updateTime;
+    </script>
+</head>
+
+<body> 
+    {% block content %}{% endblock %}
+</body>
+
+</html>

@@ -1,0 +1,113 @@
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .website-title {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 2.5em;
+        }
+        main {
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px 0;
+            background-color: #333;
+            color: #fff;
+        }
+        .game-image {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <!-- Home button using Django URL template tag -->
+                <li><a href="{% url 'index' %}">Home</a></li>
+            </ul>
+        </nav>
+        <h1 class="website-title">{{ game.title }}</h1>
+    </header>
+    
+    <main>
+        <h2>About {{ game.title }}</h2>
+        <p>{{ game.description }}</p>
+
+        <h2>Gameplay Features</h2>
+        <p>This game features several modes of gameplay, including:</p>
+        <ul>
+            {% for feature in game.features.all %}
+                <li><strong>{{ feature.title }}:</strong> {{ feature.description }}</li>
+            {% empty %}
+                <li>No features listed for this game.</li>
+            {% endfor %}
+        </ul>
+
+        {% if game.additional_info %}
+            <h2>Additional Information</h2>
+            <p>{{ game.additional_info }}</p>
+        {% endif %}
+        
+        {% if game.development_history %}
+            <h2>Development History</h2>
+            <p>{{ game.development_history }}</p>
+        {% endif %}
+        
+        {% if game.community_involvement %}
+            <h2>Community Involvement</h2>
+            <p>{{ game.community_involvement }}</p>
+        {% endif %}
+
+        {% if game.trailer_url %}
+            <h2>Gameplay Trailer</h2>
+            <iframe width="560" height="315" src="{{ game.trailer_url }}" title="Gameplay Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        {% endif %}
+
+        <h2>Images</h2>
+        <div class="game-images">
+            {% if game.image %}
+                <img src="{{ game.image.url }}" alt="{{ game.title }} cover image" class="game-image">
+            {% else %}
+                <p>No images available for this game.</p>
+            {% endif %}
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2024 Your Website
+    </footer>
+</body>

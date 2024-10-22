@@ -1,0 +1,148 @@
+@font-face {
+    font-family: 'ecco';
+    src: url('fonts/Ecco.ttf') format('truetype'),
+}
+.game-item {
+    display: flex;             /* Enable Flexbox */
+    flex-direction: column;    /* Arrange items vertically */
+    margin-bottom: 20px;       /* Space between game items */
+}
+
+.game-image {
+    max-width: 100%;          /* Ensure images are responsive */
+    height: auto;             /* Maintain aspect ratio */
+}
+
+.game-item a:hover {
+    color: #e4c4c4;    
+}
+
+body {
+    font-family: "ecco", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+header {
+    display: flex; /* Enable flexbox layout */
+    justify-content: space-between; /* Space between child elements */
+    align-items: center; /* Center items vertically */
+    background-color: #ffffff;
+    padding: 20px;
+    color: black; /* Changed text color to black for better contrast */
+    border-bottom: 2px solid #cccccca6; /* Light gray border */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Shadow below header */
+    position: fixed;
+    width: 100%;
+}
+
+
+header h1 {
+    margin-right: 0%;
+
+}
+h1, h2 {
+    margin: 0;
+    font-weight: bolder;
+}
+main {
+    padding: 20px;
+}
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: right;
+    padding: 20px;
+}
+h1 {
+    font-size: 2em; 
+    font-family: "ecco", serif;
+    font-weight: bolder;
+}
+.game-image {
+    width: 500px; /* Set the width to 500 pixels */
+    height: auto; /* Let the height adjust to keep the proportions the same */
+    border-radius: 10px; /* Add rounded corners */
+}
+ul {
+    display:flex;
+    flex-direction: column;
+}
+.wiki-icon {
+    width: 30px;
+    height: auto;
+}
+.real-button {
+    width: min-content;
+    border-radius: 10px;
+}
+.game-button {
+    width: min-content;
+}
+header {
+    background-color: #ffffff; /* Background color for the header */
+    color: black; /* Changed text color to black for better contrast */
+    padding: 10px 20px; /* Padding for some space */
+    border-bottom: 2px solid #cccccca6; /* Add a light gray border at the bottom */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add a shadow below the header */
+    position: fixed;
+    width: 100%;
+}
+
+
+nav ul {
+    list-style-type: none; /* Remove bullet points */
+    margin: 0; /* Remove margin */
+    padding: 0; /* Remove padding */
+    display: flex; /* Use flexbox to arrange items in a row */
+    align-items: center; /* Center items vertically */
+    flex-direction: row;
+}
+
+nav ul li {
+    margin-right: 20px; /* Space between items */
+}
+
+nav a {
+    color: rgb(0, 0, 0); /* Link color */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold; /* Make links bold */
+}
+
+nav a:hover {
+    text-decoration: underline; /* Underline on hover for emphasis */
+    color: #e4c4c4;
+}
+
+.website-title {
+    font-size: 54px;
+}
+
+.rainbow-text {
+    font-size: 48px; /* Set font size */
+    font-weight: bold; /* Make text bold */
+    background: linear-gradient(222deg, red, orange, yellow, green, blue, indigo, violet, red); /* Rainbow gradient with seamless loop */
+    background-size: 400% 400%; /* Increase size for smoother animation */
+    -webkit-background-clip: text; /* For Safari compatibility */
+    background-clip: text; /* Clip background to text */
+    color: transparent; /* Make text transparent to show the gradient */
+    animation: rainbow 5s linear infinite; /* Add animation to the text */
+    text-align: left; /* Center text alignment */
+}
+
+@keyframes rainbow {
+    0% {
+        background-position: 0% 50%; /* Start position */
+    }
+    100% {
+        background-position: 100% 50%; /* End position */
+    }
+}
+
+.flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-content: stretch;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: center;
+}

@@ -1,0 +1,49 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block content %}
+    <header>
+        {% comment %} 
+        <nav>
+            <ul>
+                <li><a href="{% url 'random' %}">Random</a></li>
+                <li><a href="{% url 'box_model_demo' %}">BoxModelDemo</a></li>
+                <li><a href="{% url 'flexbox' %}">FlexBox</a></li>
+                <li><a href="{% url 'secret' %}">Secret</a></li>
+            </ul>
+        </nav> 
+        {% endcomment %}
+        <div class="rainbow-text flex-between"> 
+            <h1 class="website-title">Welcome to My Website</h1>           
+        </div>
+        <div class="rainbow-text" id="timeDisplay" style="margin-right: 50px;">Loading...</div>
+    </header>
+
+    <main>
+        <h2>About Me</h2>
+        <p>
+            Hi, I'm Fedya and I'm 13 years old. I'm currently in 8th grade and I enjoy spending my free time playing video games and doing sports.
+        </p>
+
+        <h2>My Interests</h2>
+        <p>
+            I have a passion for video games and enjoy playing a variety of games, from action-adventure to strategy games. When I'm not gaming, I like to stay active by participating in sports such as soccer, basketball, or swimming.
+        </p>
+
+        <h2>My Favorite Games</h2>
+        <ul>
+            <!-- Loop through all games from the database -->
+            {% for game in games %}
+                <li class="game-item">
+                    <a href="{% url 'game_detail' game.id %}">{{ game.title }}</a>
+                    <img src="{{ game.image.url }}" class="game-image" alt="{{ game.title }}">
+                </li>
+            {% empty %}
+                <li>No games available at the moment.</li>
+            {% endfor %}
+        </ul>
+    </main>
+
+    <footer>
+        &copy; 2024 Fedya
+    </footer>
+{% endblock %}
